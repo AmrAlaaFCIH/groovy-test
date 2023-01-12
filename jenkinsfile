@@ -13,7 +13,9 @@ pipeline{
                 }
             }
             steps{
-                gv.one()
+                script{
+                    gv.one()
+                }               
             }
         }
         stage('Two'){
@@ -23,7 +25,9 @@ pipeline{
                 }
             }
             steps{
-                gv.two()
+                script{
+                    gv.two()
+                }
             }
 
         }
@@ -34,7 +38,9 @@ pipeline{
                 }
             }
             steps{
-                gv.three()
+                script{
+                    gv.three()
+                }
             }
 
         }
