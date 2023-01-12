@@ -1,0 +1,47 @@
+def gv=load 'hi.groovy'
+
+pipeline{
+    agent any
+    parameters{
+        choice(name: 'Stage', choices: ['One', 'Two', 'Three'], description: 'Pick Stage to run')
+    }
+    stages{
+        stage('One'){
+            when{
+                expression{
+                    params.Stage == 'One'
+                }
+            }
+            steps{
+                gv.one()
+            }
+        }
+        stage('Two'){
+            when{
+                expression{
+                    params.Stage == 'Two'
+                }
+            }
+            steps{
+                gv.two()
+            }
+
+        }
+        stage('Three'){
+            when{
+                expression{
+                    params.Stage == 'Three'
+                }
+            }
+            steps{
+                gv.three()
+            }
+
+        }
+    }
+    post{
+        always{
+            echo "Param $params.Stage run is done"
+        }
+    }
+}
