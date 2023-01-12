@@ -1,4 +1,4 @@
-def gv=load 'hi.groovy'
+def gv
 
 pipeline{
     agent any
@@ -6,6 +6,12 @@ pipeline{
         choice(name: 'Stage', choices: ['One', 'Two', 'Three'], description: 'Pick Stage to run')
     }
     stages{
+        stage('init'){
+            script{
+                gv=load 'hi.groovy'
+            }
+        }
+
         stage('One'){
             when{
                 expression{

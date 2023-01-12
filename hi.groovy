@@ -9,5 +9,3 @@ def two(){
 def three(){
     echo "echo "this is step three""
 }
-
-return this
